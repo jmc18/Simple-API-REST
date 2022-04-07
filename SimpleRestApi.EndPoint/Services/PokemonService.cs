@@ -16,6 +16,9 @@ namespace SimpleRestApi.EndPoint.Services
             _apiBaseUrl = "https://pokeapi.co/api/v2/pokemon";
         }
 
+        public PokemonService()
+        { }
+
         public async Task<PokemonGenericModel> GetPockemonByName(string pokemonName)
         {
             try
