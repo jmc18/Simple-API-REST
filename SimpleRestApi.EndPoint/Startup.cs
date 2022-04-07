@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using SimpleRestApi.EndPoint.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,7 @@ namespace SimpleRestApi.EndPoint
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SimpleRestApi.EndPoint", Version = "v1" });
             });
+            services.AddHttpClient<IPokemonService, PokemonService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +45,7 @@ namespace SimpleRestApi.EndPoint
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "SimpleRestApi.EndPoint v1"));
             }
+
 
             app.UseHttpsRedirection();
 
